@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple msg App</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<style>
+ * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+ body {
+      background-color: #282a36; /* Dracula background color */
+      color: #f8f8f2; /* Dracula foreground color */
+  }
+    
+.message-left {
+  text-align: left;
+  background-color: #6272a4; /* Dracula comment color */
+  border-radius: 10px;
+  margin: 10px;
+  padding: 10px;
+}
+
+.message-right {
+  text-align: right;
+  background-color: #44475a; /* Dracula purple */
+  border-radius: 10px;
+  margin: 10px;
+  padding: 10px;
+}
+
+.message-left,
+.message-right {
+  color: #dddee3; /* Dracula background color */
+}
+  .user-info {
+      font-weight: bold;
+    }
+
+  .message-content {
+      border: 1px solid #6272a4; /* Dracula comment color */
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 10px;
+    }
+
+  .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #44475a; /* Dracula selection color */
+      padding: 10px;
+    }
+
+    .header h1 {
+      margin: 0;
+    }
+
+  .header form {
+      display: flex;
+      align-items: center;
+    }
+
+  .header form:not(:last-child) {
+      margin-right: 10px;
+    }
+
+  .header form button:hover {
+      background-color: #6272a4; /* Dracula comment color */
+      cursor: pointer;
+    }
+
+  .search-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #44475a; /* Dracula selection color */
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.search-container input {
+  flex-grow: 1;
+  border: none;
+  background-color: #282a36; /* Dracula background color */
+  color: #f8f8f2; /* Dracula foreground color */
+  padding: 10px;
+  border-radius: 10px;
+  margin-right: 10px;
+}
+
+.search-container button {
+  background-color: transparent;
+  border: none;
+  color: #50fa7b; /* Dracula green */
+  cursor: pointer;
+}
+
+.search-container button:hover {
+  color: #8be9fd; /* Dracula cyan */
+}
+
+.logout-button {
+  background-color: #ff5555; /* Dracula red */
+  color: #f8f8f2; /* Dracula foreground color */
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.logout-button:hover {
+  background-color: #ff6e6e;
+}
+.form-container {
+
+  display: flex;
+  justify-content: center;}
+
+.delete-button {
+  display: inline-block;
+  background-color: #ff5555; /* Dracula red */
+  color: #f8f8f2; /* Dracula foreground color */
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  
+}
+
+.delete-button:hover {
+  background-color: #ff6e6e;
+}
+.message-form {
+  margin-top: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #44475a; /* Dracula selection color */
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.message-form input {
+  flex-grow: 1;
+  border: none;
+  background-color: #282a36; /* Dracula background color */
+  color: #f8f8f2; /* Dracula foreground color */
+  padding: 10px;
+  border-radius: 10px;
+  margin-right: 10px;
+}
+
+.message-form button {
+  background-color: transparent;
+  border: none;
+  color: #50fa7b; /* Dracula green */
+  cursor: pointer;
+}
+
+.message-form button:hover {
+  color: #8be9fd; /* Dracula cyan */
+}
+</style>
+
+</head>
+<body>
+  <div class="header">
+    <h1><i class="fas fa-tasks"></i> Simple Message App</h1>
+
+    <form action="/search" method="get" class="search-container">
+      <input type="text" id="search" name="search" placeholder="Search messages">
+      <button type="submit"><i class="fas fa-search"></i></button>
+    </form>
+
+    <form action="/logout" method="post">
+      <button type="submit" class="logout-button"><i class="fas fa-sign-out-alt"></i></button>
+    </form>
+  </div>
+
+
+  <div class="form-container">
+    <form action="/add" method="post" class="message-form">
+      <input type="text" id="description" name="description" placeholder="Type a message..." required>
+      <button type="submit"><i class="fas fa-paper-plane"></i></button>
+    </form>
+  </div>
+  
+  <h2>MSGs:</h2>
+  <ul>
+    <!-- Loop through tasks and display them -->
+    <%
+  tasks.tasks.forEach((task, index) => {
+%>
+  <li class="<%= task.username  != tasks.username ? 'message-left' : 'message-right' %>">
+    <div class="message-content">
+      <div class="user-info">
+        <i class="fas fa-user"></i>
+        <span><%= task.username %></span>
+      </div>
+      <p><%= task.description %></p>
+    </div>
+  <% if (task.username == tasks.username) { %>
+    <a class="delete-button" href="/delete/<%= task.id %>"><i class="fas fa-trash"></i></a>
+  <% } %>
+<%
+  });
+%>
+  
+  </ul>
+</body>
+</html>

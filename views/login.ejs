@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #282a36;
+      color: #f8f8f2;
+    }
+    form {
+    background-color: #44475a;
+    padding: 20px;
+    border-radius: 5px;
+    width: 300px;
+    margin: auto;
+    margin-top: 100px;
+    box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.2);
+  }
+
+    label, input {
+      display: block;
+      margin-bottom: 10px;
+    }
+    button {
+      background-color: #50fa7b;
+      border: none;
+      color: #282a36;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    button:hover {
+      background-color: #7efba2;
+    }
+    
+    .link {
+      color: #50fa7b;
+      text-decoration: none;
+    }
+    
+   
+  </style>
+</head>
+<body>
+  <h2 style="text-align: center;">Login Form</h2>
+  <form action="/login_action" method="POST">
+    <label for="username">Username:</label><br>
+    <input type="text" id="username" name="username" required><br>
+    <label for="password">Password:</label><br>
+    <input type="password" id="password" name="password" required><br>
+    <button type="submit">Login</button> <p>Don't have an account? <a class="link" href="/register">Register</a></p>
+  </form>
+</body>
+</html>

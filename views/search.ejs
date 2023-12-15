@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple msg App</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<style>
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+  }
+    
+body {
+    background-color: #282a36; /* Dracula background color */
+    color: #f8f8f2; /* Dracula foreground color */
+}
+.delete-button {
+  display: inline-block;
+  background-color: #ff5555; /* Dracula red */
+  color: #f8f8f2; /* Dracula foreground color */
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  
+}
+.delete-button:hover {
+  background-color: #ff6e6e;
+}
+.message-left {
+  text-align: left;
+  background-color: #6272a4; /* Dracula comment color */
+  border-radius: 10px;
+  margin: 10px;
+  padding: 10px;
+}
+
+.message-right {
+  text-align: right;
+  background-color: #44475a; /* Dracula purple */
+  border-radius: 10px;
+  margin: 10px;
+  padding: 10px;
+}
+
+.message-left,
+.message-right {
+  color: #dddee3; /* Dracula background color */
+}
+a {
+        color: #333;
+        text-decoration: none;
+        font-size: 1.2em;
+        margin-bottom: 20px;
+        display: inline-block;
+        background-color: #f2f2f2;
+        padding: 10px 20px;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+    a:hover {
+        background-color: #ddd;
+    }
+    h2 {
+        color: #9f9f9f;
+        margin-bottom: 20px;
+    }
+    .fa-arrow-left {
+        margin-left: 10px;
+        color: #333;
+    }
+</style>
+</head>
+<body>
+    <a href="/">Back <i class="fa-solid fa-arrow-left"></i></a>
+    <h2>Results for: <%= search_value %></h2>
+  <ul>
+    <!-- Loop through tasks and display them -->
+    <%
+  tasks.tasks.forEach((task, index) => {
+%>
+  <li class="<%= task.username  != tasks.username ? 'message-left' : 'message-right' %>">
+    <div class="message-content">
+      <div class="user-info">
+        <i class="fas fa-user"></i>
+        <span><%= task.username %></span>
+      </div>
+      <p><%= task.description %></p>
+    </div>
+  <% if (task.username == tasks.username) { %>
+    <a class="delete-button" href="/delete/<%= task.id %>"><i class="fas fa-trash"></i></a>
+  <% } %>
+<%
+  });
+%>
+  
+  </ul>
+</body>
+</html>

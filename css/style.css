@@ -1,0 +1,29 @@
+.message-left {
+    text-align: left;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 10px;
+  }
+  
+  .message-right {
+    text-align: right;
+    background-color: #d0d0d0;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 10px;
+  }
+  
+  .user-info {
+    font-weight: bold;
+  }
+  
+  .message-content {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 10px;
+  }
+  body {
+    background-color: blue;
+  }
