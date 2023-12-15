@@ -73,7 +73,7 @@ a {
 </head>
 <body>
     <a href="/">Back <i class="fa-solid fa-arrow-left"></i></a>
-    <h2>Results for: <%= search_value %></h2>
+    <h2>Results for: <%- search_value %></h2>
   <ul>
     <!-- Loop through tasks and display them -->
     <%
@@ -85,7 +85,7 @@ a {
         <i class="fas fa-user"></i>
         <span><%= task.username %></span>
       </div>
-      <p><%= task.description %></p>
+      <p><%- task.description %></p>
     </div>
   <% if (task.username == tasks.username) { %>
     <a class="delete-button" href="/delete/<%= task.id %>"><i class="fas fa-trash"></i></a>

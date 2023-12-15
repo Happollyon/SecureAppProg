@@ -198,13 +198,13 @@
     <%
   tasks.tasks.forEach((task, index) => {
 %>
-  <li class="<%= task.username  != tasks.username ? 'message-left' : 'message-right' %>">
+  <li class="<%- task.username  != tasks.username ? 'message-left' : 'message-right' %>">
     <div class="message-content">
       <div class="user-info">
         <i class="fas fa-user"></i>
-        <span><%= task.username %></span>
+        <span><%- task.username %></span>
       </div>
-      <p><%= task.description %></p>
+      <p><%- task.description %></p>
     </div>
   <% if (task.username == tasks.username) { %>
     <a class="delete-button" href="/delete/<%= task.id %>"><i class="fas fa-trash"></i></a>

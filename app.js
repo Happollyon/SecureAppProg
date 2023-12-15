@@ -151,11 +151,14 @@ app.get('/login', (req, res) => {
 });
 
 // login user username password
+// payload ' or 1=1 --
 app.post('/login_action', (req, res) => {
   const username = req.body.username;
   const password = req.body.password;
+  const query = `SELECT * FROM users WHERE username = '${username}' AND password = '${password}'`;
+  console.log(query);
   if (username && password) {
-    db.all('SELECT * FROM users WHERE username = ? AND password = ?', [username, password], (err, rows) => {
+    db.all(`SELECT * FROM users WHERE username = '${username}' AND password = '${password}'`, (err, rows) => {
       if (err) {
         return console.error(err.message);
       }
